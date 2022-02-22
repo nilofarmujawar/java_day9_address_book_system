@@ -1,3 +1,5 @@
+
+
 package com.bridgelabz;
 
 //uc1
@@ -5,7 +7,6 @@ package com.bridgelabz;
    /*
         to create a Contacts in Address Book with first and last names, address,
         city, state, zip, phone number and email.....
-
     */
 
 public class AddressBook {
@@ -100,4 +101,3 @@ class contactDetails {
     }
 
 }
-
