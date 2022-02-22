@@ -1,32 +1,53 @@
 package com.bridgelabz;
 
-//uc1
+//uc4
 
    /*
-        to create a Contacts in Address Book with first and last names, address,
-        city, state, zip, phone number and email.....
+        Ability to delete a person using person's name
 
     */
+
+
+import java.util.Scanner;   //import scanner class
 
 public class AddressBook {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book");
 
-        contactDetails newContact = new contactDetails();  //create object for scanner class
+        Scanner sc = new Scanner(System.in);
 
-        newContact.setFirstName("Nilofar \n");
-        newContact.setLastName("Mujawar \n");
-        newContact.setAddressCity("Nandre \n");
-        newContact.setState("Maharashtra \n");
-        newContact.setZip(416416);
-        newContact.setPhoneNumber("9860644360 \n");
-        newContact.setEmail("nilofarmujawar1118@gmail.com \n");
-        System.out.println("The Contact is : \n" + newContact);
+        AddressBookDe Book = new AddressBookDe();
+        Book.addContact();//Calling Add Contacts Method
+        System.out.println(Book.person);
+        System.out.println("Enter the choice \n 1. Edit \n 2. Delete");
+        int option = sc.nextInt();
 
+        //using switch case statement
+
+        switch (option) {
+            case 1:
+                Book.editContact();
+                System.out.println("You have Entered following data");
+                System.out.println(Book.person);
+                System.out.println("Thank you for Using the Address book");
+                break;
+
+            case 2:
+                Book.deleteContact();
+                System.out.println("Address Book details :" + Book.person);
+                break;
+        }
     }
-
 }
+
+/*
+create a Contacts in Address
+Book with first and last names, address,
+city, state, zip, phone number and
+email...
+*/
+
 
 class contactDetails {
     private String firstName;
@@ -101,3 +122,70 @@ class contactDetails {
 
 }
 
+/* add a new
+Contact to Address Book
+*/
+
+class AddressBookDe {
+
+
+    Scanner sc = new Scanner(System.in);
+    contactDetails person = new contactDetails();
+
+    public void addContact() {
+        contactDetails person = new contactDetails();
+        System.out.println("Enter First Name: ");
+        String firstName = sc.nextLine();
+        System.out.println("Enter last Name: ");
+        String lastName = sc.nextLine();
+        System.out.println("Enter your addressCity: ");
+        String addressCity = sc.nextLine();
+        System.out.println("Enter your state: ");
+        String state = sc.nextLine();
+        System.out.println("Enter zip code : ");
+        Long zip = sc.nextLong();
+        sc.nextLine();
+        System.out.println("Enter phone number: ");
+        String phoneNumber = sc.nextLine();
+        sc.nextLine();
+        System.out.println("Enter your EMail ID: ");
+        String email = sc.nextLine();
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setAddressCity(addressCity);
+        person.setState(state);
+        person.setZip(zip.intValue());
+        person.setPhoneNumber(phoneNumber);
+        person.setEmail(email);
+        System.out.println("The Contact Details of " + firstName + "\n" + person);
+    }
+
+   /*
+   edit existing contact person using their name
+    */
+
+    public void editContact() {
+        System.out.println("Enter the firstName of person");
+        String editName = sc.nextLine();
+        if (editName.equalsIgnoreCase(person.getFirstName()))
+            addContact();
+        else
+            System.out.println("The Entered First Name Is Not Match");
+        editContact();
+    }
+
+/*
+delete a
+person using
+person's name
+ */
+
+    public void deleteContact() {
+        System.out.println("Enter firstName of the person");
+        String editName = sc.nextLine();
+        if (editName.equals(person.getFirstName())) {
+            System.out.println("Deleted " + person.getFirstName() + " details");
+            person = null;
+        }
+    }
+}
