@@ -1,9 +1,9 @@
 package com.bridgelabz;
 
-//uc2
+//uc3
 
    /*
-        Add new contact to address book.
+        edit existing contact person using their name
 
     */
 
@@ -13,21 +13,31 @@ import java.util.Scanner;   //import scanner class
 public class AddressBook {
 
     public static void main(String[] args) {
+
         System.out.println("Welcome to Address Book");
 
-        /*
-             create an a object is person for newAddressBook class (This will call the constructor)
-         */
+        Scanner sc = new Scanner(System.in);  //create object for scanner class
 
-        newAddressBook person = new newAddressBook();
-        person.addContact();
+        AddressBookDe person = new AddressBookDe(); //create object person
 
+        person.addContact();//Calling Add Contacts Method
+
+        System.out.println("Enter Y To Edit The Contact");
+
+        String op = sc.nextLine();
+
+        if (op.equals("y") || op.equals("Y")) {
+
+            System.out.println("You have Entered following data");
+            System.out.println("The Contact Details After Editing : " + person);
+        }
     }
 
 }
-  /*
-  person all details
-   */
+/*
+person contact details
+ */
+
 
 class contactDetails {
     private String firstName;
@@ -102,12 +112,14 @@ class contactDetails {
 
 }
 
-class newAddressBook {
+class AddressBookDe {
 
-    Scanner sc = new Scanner(System.in);  // create object for scanner class
+
+    Scanner sc = new Scanner(System.in);
+    contactDetails person = new contactDetails();
 
     public void addContact() {
-        contactDetails person = new contactDetails();    //create object for contactDetails class
+        contactDetails person = new contactDetails();
         System.out.println("Enter First Name: ");
         String firstName = sc.nextLine();
         System.out.println("Enter last Name: ");
@@ -132,5 +144,18 @@ class newAddressBook {
         person.setPhoneNumber(phoneNumber);
         person.setEmail(email);
         System.out.println("The Contact Details of " + firstName + "\n" + person);
+    }
+/*
+edit contact details
+ */
+
+    public void editContact() {
+        System.out.println("Enter the firstName of person");
+        String editName = sc.nextLine();
+        if (editName.equalsIgnoreCase(person.getFirstName()))
+            addContact();
+        else
+            System.out.println("The Entered First Name Is Not Match");
+        editContact();
     }
 }
