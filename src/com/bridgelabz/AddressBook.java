@@ -41,7 +41,12 @@ public class AddressBook {
     }
 }
 
-
+/*
+create a Contacts in Address
+Book with first and last names, address,
+city, state, zip, phone number and
+email...
+*/
 
 
 class contactDetails {
@@ -117,6 +122,10 @@ class contactDetails {
 
 }
 
+/* add a new
+Contact to Address Book
+*/
+
 class AddressBookDe {
 
 
@@ -152,7 +161,7 @@ class AddressBookDe {
     }
 
    /*
-   edit edit existing contact person using their name
+   edit existing contact person using their name
     */
 
     public void editContact() {
